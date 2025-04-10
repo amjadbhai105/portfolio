@@ -461,7 +461,7 @@
             </div>
             
             <div class="contact-form">
-                <form>
+                <form id="whatsappForm">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Full Name *</label>
@@ -522,5 +522,28 @@
             </div>
         </div>
     </footer>
+     <script>
+        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Format phone number (remove any non-digit characters)
+            const formattedPhone = phone.replace(/\D/g, '');
+            
+            // Create WhatsApp message
+            const whatsappMessage = `*New Message from Website*%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Subject:* ${subject}%0A%0A*Message:*%0A${message}`;
+            
+            // Open WhatsApp with the message
+            window.open(`https://wa.me/923154936412?text=${whatsappMessage}`, '_blank');
+            
+            // Optional: Reset the form after submission
+            this.reset();
+        });
+    </script>
 </body>
 </html>
