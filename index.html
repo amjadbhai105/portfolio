@@ -189,7 +189,7 @@
             color: var(--dark-color);
         }
         
-        .contact {
+  .contact {
             padding: 100px 0;
             background: #f5f7fa;
         }
@@ -198,6 +198,14 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 50px;
+            align-items: flex-start;
+        }
+        
+        .contact-info {
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
         .contact-info h3 {
@@ -208,11 +216,30 @@
         
         .contact-info p {
             margin-bottom: 30px;
+            color: #555;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-details p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-details i {
+            margin-right: 10px;
+            color: var(--primary-color);
+            font-size: 18px;
+            width: 25px;
         }
         
         .social-links {
             display: flex;
             gap: 15px;
+            margin-top: 20px;
         }
         
         .social-links a {
@@ -231,6 +258,81 @@
         .social-links a:hover {
             background: var(--primary-color);
             transform: translateY(-3px);
+        }
+        
+        .contact-form {
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.2);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        
+        .form-btn:hover {
+            background: var(--dark-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .contact-info,
+            .contact-form {
+                padding: 20px;
+            }
         }
         
         .whatsapp-float {
@@ -381,7 +483,7 @@
         </div>
     </section>
 
-    <section class="contact" id="contact">
+   <section class="contact" id="contact">
         <div class="container">
             <div class="section-title">
                 <h2>Contact Us</h2>
@@ -391,25 +493,56 @@
                 <div class="contact-info">
                     <h3>Let's Talk About Your Project</h3>
                     <p>We're excited to hear about your ideas and help bring them to life. Contact us today to discuss how we can work together.</p>
+                    
+                    <div class="contact-details">
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Business Street, City, Country</p>
+                        <p><i class="fas fa-phone"></i> +92 315 4936412</p>
+                        <p><i class="fas fa-envelope"></i> info@mybrand.com</p>
+                    </div>
+                    
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/923154936412" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
+                
                 <div class="contact-form">
                     <form>
                         <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your name" required>
                         </div>
+                        
                         <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
                         </div>
+                        
                         <div class="form-group">
-                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
                         </div>
-                        <button type="submit" class="btn">Send Message</button>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject">
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="support">Support Request</option>
+                                <option value="business">Business Proposal</option>
+                                <option value="feedback">Feedback</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-btn">Send Message</button>
                     </form>
                 </div>
             </div>
